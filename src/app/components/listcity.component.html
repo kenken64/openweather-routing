@@ -1,0 +1,5 @@
+<mat-nav-list>
+    <a mat-list-item *ngFor="let c of cities" [routerLink]="['weather', c.city]">
+        {{c.city}} - {{c.country}}
+    </a>
+</mat-nav-list>
