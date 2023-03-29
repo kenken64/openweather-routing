@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { City } from '../model/city';
+import { CitiesRepository } from '../services/cities.repo';
 import { WeatherService } from '../services/weather.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class AddcityComponent implements OnInit, OnDestroy{
   cityObj?: City;
 
   constructor(private formBuilder: FormBuilder, private router: Router,
-      private weatherSvc: WeatherService){
+      private citiesRepo: CitiesRepository){
     
   }
 
@@ -34,7 +35,7 @@ export class AddcityComponent implements OnInit, OnDestroy{
     const city = this.form?.value['city'];
     const imageUrl = this.form?.value['imageUrl'];
     this.cityObj = { country: countryName, city: city, imageUrl: imageUrl};
-    this.weatherSvc.addCity(this.cityObj);
+    this.citiesRepo.addCity(this.cityObj);
     this.router.navigate(['/']);
   }
 
